@@ -11,9 +11,7 @@ function addressComponent($log) {
     controller: addressController,
     controllerAs: 'vm',
     bindToController: true,
-    scope: {
-      'addr': '='
-    }
+    scope: false
   };
 
   return directive;

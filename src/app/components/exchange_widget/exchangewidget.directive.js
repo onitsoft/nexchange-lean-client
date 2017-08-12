@@ -12,20 +12,28 @@ function exchangeWidgetComponenet($log) {
     controllerAs: 'vm',
     bindToController: true,
     scope: {
-      'amount': '@',
-      'type': '@'
+      amount: '@',
+      type: '@',
+      address: '=',
     }
   };
 
   return directive;
 
-  function exchangeWidgetController () {
+  function exchangeWidgetController ($scope) {
+    'ngInject';
+
     this.coinSelected = function (type, coin) {
         // TODO: migrate to conf
         type = type === 'deposit' ? 'receive' : 'deposit';
         let event = 'reset' + type;
-        this.$broadcast(event, coin);
+        $scope.$broadcast(event, coin);
+    };
+
+    this.showWithdrawAddress = function () {
+      $scope.$parent.showWithdrawAddress = true;
     }
+
   }
 
 }

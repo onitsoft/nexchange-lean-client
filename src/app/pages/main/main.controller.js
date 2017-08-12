@@ -15,14 +15,16 @@ function MainController($log) {
 
   $log.debug('Hello from main controller!');
 
+  this.address = {
+    show: false,
+    addr: ''
+  };
 
 	this.lodash_version = _.VERSION;
 
 
 
 	this.moment_version = moment.version;
-
-
     // this.angularLogo = angularLogo;
 
 }

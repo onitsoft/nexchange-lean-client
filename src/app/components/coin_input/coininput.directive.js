@@ -14,18 +14,29 @@ function addressComponent($log) {
     scope: {
       amount: '@',
       type: '@',
-      selectedCoin: '@'
+      selectedCoin: '@',
+      showWithdrawAddress: '@',
+      coinSelected: '&'
     }
   };
 
   return directive;
 
-  function coinInputController () {
+  function coinInputController ($scope) {
+    'ngInject';
+    let self = this;
 	  $log.debug('Hello from coinInput controller!');
 
+	  this.icons = [
+      {name: 'BTC'},
+      {name: 'LTC'},
+      {name: 'ETH'}
+    ];
+
 	  this.select = function (coinName) {
-	    this.selectedCoin = coinName;
-	    this.$broadcast('reset')
+	    debugger;
+	    self.selectedCoin = coinName;
+	    $scope.$broadcast('reset')
     }
   }
 

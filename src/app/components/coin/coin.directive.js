@@ -2,7 +2,7 @@
 
 import coinTpl from './coin.html';
 
-function coinComponenet($log) {
+function coinComponent($log) {
 	'ngInject';
 
   var directive = {
@@ -14,33 +14,42 @@ function coinComponenet($log) {
     scope: {
       type: '@',
       selected: '@',
-      coinName: '@',
+      expanded: '@',
+      name: '@',
       iconSrc: '@',
       iconClass: '@',
-      selectedAsCounter: '@'
+      selectedAsCounter: '@',
+      coinSelected: '&',
+      select: '&'
     }
   };
 
   return directive;
 
-  function coinController () {
+  function coinController ($scope) {
+    'ngInject';
     // TODO: migrate to conf
 	  let hideCounterEvent = 'hide' + this.type;
-
-	  this.$on(hideCounterEvent, function(coinName) {
-      this.selectedAsCounter = this.coinName === coinName;
+    let self = this;
+	  $scope.$on(hideCounterEvent, function(coinName) {
+      this.selectedAsCounter = this.name === coinName;
     });
 
 	  this.selectCurrent = function () {
-      this.select(this.coinName);
-      this.selected = true;
+	    debugger;
+	    this.select(this.name);
+      self.selected = true;
+      // hide coin from counters
+      self.coinSelected(this.name);
+
     };
 
-    this.$on('reset', function() {
-      this.selected = false;
+    $scope.$on('reset', function() {
+      self.selected = false;
     });
 
   }
+
 
 }
 
