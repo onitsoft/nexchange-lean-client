@@ -16,7 +16,7 @@ function HeaderComponent($log) {
   return directive;
 
   function HeaderController () {
-	  $log.debug('Hello from header controller!');
+	  $log.log('Hello from header controller!');
   }
 
 }

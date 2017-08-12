@@ -1,11 +1,11 @@
 'use strict';
 
-import footerDirective from './address.directive';
+import addressDirective from './address.directive';
 import './address.scss';
 
-const footerModule = angular.module('footer-module', []);
+const addressModule = angular.module('address-module', []);
 
-footerModule
-  .directive('footerTest', footerDirective);
+addressModule
+  .directive('address', addressDirective);
 
-export default footerModule;
+export default addressModule;

@@ -10,9 +10,9 @@ function routeConfig($urlRouterProvider, $stateProvider, resolverProvider) {
 
     $stateProvider
         .state('async', {
-          url: '/async',
+          url: '/exchange',
           templateUrl: asyncTemplate,
-          controller: 'asyncController',
+          controller: 'asyncExchangeController',
           resolve: {
             asyncPreloading: resolverProvider.asyncPagePrealoading
           }
@@ -26,4 +26,3 @@ function routeConfig($urlRouterProvider, $stateProvider, resolverProvider) {
 export default angular
   .module('index.routes', [])
     .config(routeConfig);
-

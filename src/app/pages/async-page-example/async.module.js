@@ -6,6 +6,6 @@ import asyncController from './async.controller.js';
 
 const asyncModule = angular.module('async-module', []);
 
-asyncModule.controller('asyncController', asyncController);
+asyncModule.controller('asyncExchangeController', asyncController);
 
 export default asyncModule;

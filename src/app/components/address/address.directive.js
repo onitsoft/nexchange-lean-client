@@ -2,23 +2,26 @@
 
 import addressTpl from './address.html';
 
-function footerComponent($log) {
+function addressComponent($log) {
 	'ngInject';
 
   var directive = {
     restrict: 'E',
     templateUrl: addressTpl,
-    controller: FooterController,
+    controller: addressController,
     controllerAs: 'vm',
-    bindToController: true
+    bindToController: true,
+    scope: {
+      'addr': '='
+    }
   };
 
   return directive;
 
-  function FooterController () {
-	  $log.debug('Hello from footer controller!');
+  function addressController () {
+	  $log.debug('Hello from address controller!');
   }
 
 }
 
-export default footerComponent;
+export default addressComponent;

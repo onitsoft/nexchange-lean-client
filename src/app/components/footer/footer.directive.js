@@ -16,7 +16,7 @@ function footerComponent($log) {
   return directive;
 
   function FooterController () {
-	  $log.debug('Hello from footer controller!');
+	  $log.debug('Hello from header controller!');
   }
 
 }

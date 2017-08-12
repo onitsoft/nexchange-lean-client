@@ -8,7 +8,7 @@ import  _ from 'lodash/core';
 import moment from 'moment';
 
 
-import angularLogo from '_images/angular.png';
+// import angularLogo from '_images/angular.png';
 
 function MainController($log) {
   'ngInject';
@@ -23,7 +23,7 @@ function MainController($log) {
 	this.moment_version = moment.version;
 
 
-    this.angularLogo = angularLogo;
+    // this.angularLogo = angularLogo;
 
 }
 

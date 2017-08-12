@@ -1,0 +1,13 @@
+<div class="col-md-6">
+  <input type="text" ng-model="vm.amount">
+</div>
+<div class="col-md-6">
+      <div ng-repeat="icon in icons | filter:{'name': vm.selectedCoin} track by $index" ng-click="vm.expanded">
+        <coin coin-name="{{icon.name}}"></coin> >
+      </div>
+</div>
+<div class="col-md-12">
+  <div ng-repeat="icon in icons | filter:{'name': '!' + vm.selectedCoin} track by $index" ng-show="vm.expanded">
+      <coin coin-name="{{icon.name}}"></coin>
+  </div>
+</div>

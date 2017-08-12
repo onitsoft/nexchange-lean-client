@@ -6,6 +6,6 @@ import './footer.scss';
 const footerModule = angular.module('footer-module', []);
 
 footerModule
-  .directive('footerTest', footerDirective);
+  .directive('footer', footerDirective);
 
 export default footerModule;

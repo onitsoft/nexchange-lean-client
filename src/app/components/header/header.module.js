@@ -1,11 +1,11 @@
 'use strict';
 
-import footerDirective from './header.directive';
+import headerDirective from './header.directive';
 import './header.scss';
 
-const headerModule = angular.module('footer-module', []);
+const headerModule = angular.module('header-module', []);
 
 headerModule
-  .directive('footerTest', footerDirective);
+  .directive('header', headerDirective);
 
 export default headerModule;
