@@ -15,6 +15,7 @@ function exchangeWidgetComponenet($log) {
       amount: '@',
       type: '@',
       address: '=',
+      coinSelected: '='
     }
   };
 

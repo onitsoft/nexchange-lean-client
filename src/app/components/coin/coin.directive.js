@@ -19,8 +19,8 @@ function coinComponent($log) {
       iconSrc: '@',
       iconClass: '@',
       selectedAsCounter: '@',
-      coinSelected: '&',
-      select: '&'
+      coinSelected: '=',
+      select: '='
     }
   };
 
@@ -32,15 +32,14 @@ function coinComponent($log) {
 	  let hideCounterEvent = 'hide' + this.type;
     let self = this;
 	  $scope.$on(hideCounterEvent, function(coinName) {
-      this.selectedAsCounter = this.name === coinName;
+      self.selectedAsCounter = self.name === coinName;
     });
 
 	  this.selectCurrent = function () {
-	    debugger;
-	    this.select(this.name);
+	    self.select(self.name);
       self.selected = true;
       // hide coin from counters
-      self.coinSelected(this.name);
+      // this.coinSelected(self.type, self.name);
 
     };
 

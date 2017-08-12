@@ -16,7 +16,7 @@ function addressComponent($log) {
       type: '@',
       selectedCoin: '@',
       showWithdrawAddress: '@',
-      coinSelected: '&'
+      coinSelected: '='
     }
   };
 
@@ -34,7 +34,6 @@ function addressComponent($log) {
     ];
 
 	  this.select = function (coinName) {
-	    debugger;
 	    self.selectedCoin = coinName;
 	    $scope.$broadcast('reset')
     }
