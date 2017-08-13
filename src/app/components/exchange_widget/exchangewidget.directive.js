@@ -20,7 +20,7 @@ function exchangeWidgetComponenet($log) {
 
   return directive;
 
-  function exchangeWidgetController ($scope) {
+  function exchangeWidgetController ($scope, CHANGED_EVENT_SUFFIX) {
     'ngInject';
     let self = this;
 
@@ -35,8 +35,14 @@ function exchangeWidgetComponenet($log) {
         $scope.$broadcast(event, eventData);
     };
 
-    this.showWithdrawAddress = function () {
+    self.changeCounter = function (eventData) {
+
+    };
+
+    self.showWithdrawAddress = function (eventData) {
+      let eventName = eventData.type + CHANGED_EVENT_SUFFIX;
       $scope.$parent.showWithdrawAddress = true;
+      $scope.$broadcast(eventName, eventData);
     }
 
   }
