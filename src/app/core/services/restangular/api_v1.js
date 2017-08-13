@@ -4,10 +4,10 @@ export default function (app) {
     app
         .factory('ApiV1', storeFactory);
 
-        function storeFactory (RestAngular, API_V1_BASE_URL) {
+        function storeFactory (Restangular, API_V1_BASE_URL) {
           'ngInject'
-          RestAngular.setBaseUrl(API_V1_BASE_URL);
+          Restangular.setBaseUrl(API_V1_BASE_URL);
 
-          return RestAngular;
+          return Restangular;
         }
 }

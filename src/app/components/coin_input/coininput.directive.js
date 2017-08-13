@@ -23,14 +23,13 @@ function addressComponent($log) {
 
   return directive;
 
-  function coinInputController ($scope, Price, AMOUNT_CHANGE_DEBOUNCE) {
+  function coinInputController ($scope, Price, AMOUNT_CHANGE_DEBOUNCE, CHANGED_EVENT_SUFFIX) {
     'ngInject';
 
-    const changeEventName = 'changed';
     let self = this;
     let hideCounterEvent = 'reset' + this.type;
     // TODO: refactor to configs
-    let counterChangedEvent = this.type === 'deposit' ? 'receive' + changeEventName : 'deposit' + changeEventName;
+    let counterChangedEvent = this.type === 'deposit' ? 'receive' + CHANGED_EVENT_SUFFIX : 'deposit' + CHANGED_EVENT_SUFFIX;
 
 	  $log.debug('Hello from coinInput controller!');
 
@@ -60,9 +59,8 @@ function addressComponent($log) {
         coin: self.selectedCoin,
         type: self.type
       };
-      let eventName = self.type + changeEventName;
-      self.changeCounter(eventData)
 
+      self.changeCounter(eventData)
     });
 
 	  $scope.$on(counterChangedEvent, function (event, eventData) {

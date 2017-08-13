@@ -2,7 +2,7 @@
   <label for="coin-input-{{vm.type}}">{{vm.type}}</label>
   <input type="text" ng-model="vm.amount" class="coin" id="coin-input-{{vm.type}}">
 </div>
-<div class="col-md-6">{{showAddress}}
+<div class="col-md-6">
       <div ng-repeat="icon in vm.icons | filter:{'name': vm.selectedCoin} track by $index" ng-click="vm.expanded=!vm.expanded">
         <coin name="{{icon.name}}" coin-selected="vm.coinSelected" select="vm.select"></coin>
       </div>

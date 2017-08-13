@@ -2,7 +2,7 @@
 
 export default function (app) {
     app
-        .factory('ApiV1', storeFactory);
+        .factory('Price', storeFactory);
 
         function storeFactory (ApiV1) {
           'ngInject'
