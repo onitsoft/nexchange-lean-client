@@ -12,14 +12,11 @@ function coinComponent($log) {
     controllerAs: 'vm',
     bindToController: true,
     scope: {
-      type: '@',
       selected: '@',
       expanded: '@',
       name: '@',
       iconSrc: '@',
       iconClass: '@',
-      selectedAsCounter: '@',
-      coinSelected: '=',
       select: '='
     }
   };
@@ -29,18 +26,11 @@ function coinComponent($log) {
   function coinController ($scope) {
     'ngInject';
     // TODO: migrate to conf
-	  let hideCounterEvent = 'hide' + this.type;
     let self = this;
-	  $scope.$on(hideCounterEvent, function(coinName) {
-      self.selectedAsCounter = self.name === coinName;
-    });
 
 	  this.selectCurrent = function () {
 	    self.select(self.name);
       self.selected = true;
-      // hide coin from counters
-      // this.coinSelected(self.type, self.name);
-
     };
 
     $scope.$on('reset', function() {

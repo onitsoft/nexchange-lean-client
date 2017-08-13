@@ -14,8 +14,7 @@ function exchangeWidgetComponenet($log) {
     scope: {
       amount: '@',
       type: '@',
-      address: '=',
-      coinSelected: '='
+      address: '='
     }
   };
 
@@ -23,12 +22,17 @@ function exchangeWidgetComponenet($log) {
 
   function exchangeWidgetController ($scope) {
     'ngInject';
+    let self = this;
 
-    this.coinSelected = function (type, coin) {
+    self.postSelect = function (newCoin, prevCoin, type) {
         // TODO: migrate to conf
         type = type === 'deposit' ? 'receive' : 'deposit';
+        let eventData = {
+          newCoin: newCoin,
+          prevCoin: prevCoin,
+        };
         let event = 'reset' + type;
-        $scope.$broadcast(event, coin);
+        $scope.$broadcast(event, eventData);
     };
 
     this.showWithdrawAddress = function () {

@@ -16,7 +16,7 @@ function addressComponent($log) {
       type: '@',
       selectedCoin: '@',
       showWithdrawAddress: '@',
-      coinSelected: '='
+      postSelect: '='
     }
   };
 
@@ -25,18 +25,28 @@ function addressComponent($log) {
   function coinInputController ($scope) {
     'ngInject';
     let self = this;
+    let hideCounterEvent = 'reset' + this.type;
+
 	  $log.debug('Hello from coinInput controller!');
 
-	  this.icons = [
+	  self.icons = [
       {name: 'BTC'},
       {name: 'LTC'},
       {name: 'ETH'}
     ];
 
-	  this.select = function (coinName) {
+	  self.select = function (coinName) {
+	    let prevCoin = self.selectedCoin;
 	    self.selectedCoin = coinName;
+	    self.postSelect(coinName, prevCoin, self.type);
 	    $scope.$broadcast('reset')
-    }
+    };
+
+	  $scope.$on(hideCounterEvent, function(eventData) {
+	    if (eventData.newCoin === this.selectedCoin) {
+	      self.select(eventData.prevCoin);
+      }
+    });
   }
 
 }
