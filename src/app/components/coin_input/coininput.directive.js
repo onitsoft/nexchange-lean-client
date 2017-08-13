@@ -30,14 +30,14 @@ function coinInputComponenet($log) {
     'ngInject';
 
     let self = this;
-    let hideCounterEvent = 'reset' + this.type;
+    let hideCounterEvent = 'reset' + $attrs.type;
 
-    // if ($scope.type === 'deposit') {
-    $scope.ngModel = DEFAULT_ORDER_AMOUNT;
-    // }
+    if ($attrs.type === 'deposit') {
+      $scope.ngModel = DEFAULT_ORDER_AMOUNT;
+    }
 
     // TODO: refactor to configs
-    let counterChangedEvent = this.type === 'deposit' ? 'receive' + CHANGED_EVENT_SUFFIX : 'deposit' + CHANGED_EVENT_SUFFIX;
+    let counterChangedEvent = $attrs.type === 'deposit' ? 'receive' + CHANGED_EVENT_SUFFIX : 'deposit' + CHANGED_EVENT_SUFFIX;
 
 	  $log.debug('Hello from coinInput controller!');
 
@@ -61,13 +61,13 @@ function coinInputComponenet($log) {
 	    let prevCoin = self.selectedCoin;
 	    self.selectedCoin = coinName;
 	    self.postSelect(coinName, prevCoin, self.type);
-	    $scope.$broadcast('reset');
+	    $scope.$broadcast('reset', coinName);
 
       requestNewPrice($scope.ngModel);
     };
 
 	  $scope.$on(hideCounterEvent, function(event, eventData) {
-	    if (eventData.newCoin === this.selectedCoin) {
+	    if (eventData.newCoin === self.selectedCoin) {
 	      self.select(eventData.prevCoin);
       }
     });

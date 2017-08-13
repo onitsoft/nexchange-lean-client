@@ -17,6 +17,7 @@
     </div>
 
     <div class="col-md-10 text-center">
-      <button class="btn btn-primary btn-lg" ng-click="showWithdrawAddress=true">get-started</button>
+      <button class="btn btn-primary btn-lg" ng-click="showWithdrawAddress=true" ng-hide="showWithdrawAddress">Get Started</button>
+      <button class="btn btn-danger btn-lg" ng-click="showWithdrawAddress=true" ng-show="showWithdrawAddress" ng-click="vm.placeOrder">Place Order</button>
     </div>
 </div>

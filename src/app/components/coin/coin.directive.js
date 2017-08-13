@@ -33,8 +33,8 @@ function coinComponent($log) {
       self.selected = true;
     };
 
-    $scope.$on('reset', function() {
-      self.selected = false;
+    $scope.$on('reset', function(event, coinName) {
+      self.selected = self.name === coinName;
     });
 
   }
