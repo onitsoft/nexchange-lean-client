@@ -1,9 +1,9 @@
 'use strict';
 
 import cointInputTpl from './coininput.html';
-import _ from 'lodash/core';
+import { debounce } from 'lodash'
 
-function addressComponent($log) {
+function coinInputComponenet($log) {
 	'ngInject';
 
   var directive = {
@@ -12,22 +12,30 @@ function addressComponent($log) {
     controller: coinInputController,
     controllerAs: 'vm',
     bindToController: true,
+    reqParams: '^ngModel',
     scope: {
-      amount: '@',
+      ngModel: '=',
       type: '@',
       selectedCoin: '@',
       showWithdrawAddress: '@',
-      postSelect: '='
+      postSelect: '=',
+      changeCounterPrice: '='
     }
   };
 
   return directive;
 
-  function coinInputController ($scope, Price, AMOUNT_CHANGE_DEBOUNCE, CHANGED_EVENT_SUFFIX) {
+  function coinInputController ($scope, $element, $attrs,
+                                Price, AMOUNT_CHANGE_DEBOUNCE, CHANGED_EVENT_SUFFIX, DEFAULT_ORDER_AMOUNT) {
     'ngInject';
 
     let self = this;
     let hideCounterEvent = 'reset' + this.type;
+
+    // if ($scope.type === 'deposit') {
+    $scope.ngModel = DEFAULT_ORDER_AMOUNT;
+    // }
+
     // TODO: refactor to configs
     let counterChangedEvent = this.type === 'deposit' ? 'receive' + CHANGED_EVENT_SUFFIX : 'deposit' + CHANGED_EVENT_SUFFIX;
 
@@ -39,11 +47,23 @@ function addressComponent($log) {
       {name: 'ETH'}
     ];
 
+	  let requestNewPrice = function (newAmount) {
+      let eventData = {
+        newAmount: newAmount,
+        coin: self.selectedCoin,
+        type: self.type
+      };
+
+      self.changeCounterPrice(eventData)
+    };
+
 	  self.select = function (coinName) {
 	    let prevCoin = self.selectedCoin;
 	    self.selectedCoin = coinName;
 	    self.postSelect(coinName, prevCoin, self.type);
-	    $scope.$broadcast('reset')
+	    $scope.$broadcast('reset');
+
+      requestNewPrice($scope.ngModel);
     };
 
 	  $scope.$on(hideCounterEvent, function(event, eventData) {
@@ -52,27 +72,31 @@ function addressComponent($log) {
       }
     });
 
-	  $scope.$observe('amount', function(newAmount, oldAmount) {
-	    let eventData = {
-        newAmount: newAmount,
-        oldAmount: oldAmount,
-        coin: self.selectedCoin,
-        type: self.type
-      };
+	  $scope.$watch('ngModel', function(newAmount) {
+	    if (!newAmount) {
+	      return;
+      }
 
-      self.changeCounter(eventData)
+      requestNewPrice(newAmount);
     });
 
 	  $scope.$on(counterChangedEvent, function (event, eventData) {
-      _.debounce(function () {
+	    let updatePrice = function updatePrice () {
         let pair = self.type === 'deposit' ? self.selectedCoin.toUpperCase() + eventData.coin.toUpperCase() :
           eventData.coin.toUpperCase() + self.selectedCoin.toUpperCase();
 
         Price.all(pair).all('latest').getList().then(function (priceList) {
-          let basePrice = priceList[0].ask;
-          $scope.amount = eventData.newAmount * basePrice;
+          let basePrice = priceList[0].ticker.ask;
+          $scope.ngModel = eventData.newAmount * basePrice;
         });
-      }, AMOUNT_CHANGE_DEBOUNCE);
+      };
+
+      // debounce(updatePrice, AMOUNT_CHANGE_DEBOUNCE);
+      if (self.timer) {
+        clearTimeout(self.timeout);
+      }
+
+      self.timer = setTimeout(updatePrice, AMOUNT_CHANGE_DEBOUNCE);
     });
 
 
@@ -80,4 +104,4 @@ function addressComponent($log) {
 
 }
 
-export default addressComponent;
+export default coinInputComponenet;

@@ -1,13 +1,15 @@
 <div class="row">
     <div class="col-md-5">
-      <coin-input post-select='vm.postSelect' type="deposit" selected-coin="BTC" show-withdraw-address="{{showWithdrawAddress}}">
+      <coin-input post-select="postSelect" change-counter-price="changeCounterPrice" ng-model="amountDeposit"
+                  type="deposit" selected-coin="BTC" show-withdraw-address="{{showWithdrawAddress}}">
       </coin-input>
     </div>
     <div class="col-md-2">
 
     </div>
     <div class="col-md-5">
-      <coin-input  post-select='vm.postSelect' type="receive" selected-coin="ETH" show-withdraw-address="{{showWithdrawAddress}}">
+      <coin-input post-select="postSelect" change-counter-price="changeCounterPrice" ng-model="amountReceive"
+                   type="receive" selected-coin="ETH" show-withdraw-address="{{showWithdrawAddress}}">
       </coin-input>
     </div>
     <div class="col-md-5 col-md-offset-7">
@@ -18,4 +20,3 @@
       <button class="btn btn-primary btn-lg" ng-click="showWithdrawAddress=true">get-started</button>
     </div>
 </div>
-

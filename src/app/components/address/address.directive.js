@@ -16,8 +16,10 @@ function addressComponent($log) {
 
   return directive;
 
-  function addressController () {
+  function addressController ($scope) {
+    'ngInject';
 	  $log.debug('Hello from address controller!');
+	  $scope.showWithdrawAddress = false;
   }
 
 }

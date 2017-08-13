@@ -7,5 +7,6 @@ export default function (app) {
         })
       .constant('API_V1_BASE_URL', 'https://nexchange.co.uk/en/api/v1/')
       .constant('AMOUNT_CHANGE_DEBOUNCE', 500)
-      .constant('CHANGED_EVENT_SUFFIX', 'Changed');
+      .constant('CHANGED_EVENT_SUFFIX', 'Changed')
+      .constant('DEFAULT_ORDER_AMOUNT', 1);
 }

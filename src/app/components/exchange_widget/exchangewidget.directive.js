@@ -12,9 +12,8 @@ function exchangeWidgetComponenet($log) {
     controllerAs: 'vm',
     bindToController: true,
     scope: {
-      amount: '@',
-      type: '@',
-      address: '='
+      postSelect: '=',
+      changeCounterPrice: '='
     }
   };
 
@@ -22,7 +21,7 @@ function exchangeWidgetComponenet($log) {
 
   function exchangeWidgetController ($scope, CHANGED_EVENT_SUFFIX) {
     'ngInject';
-    let self = this;
+    let self = $scope;
 
     self.postSelect = function (newCoin, prevCoin, type) {
         // TODO: migrate to conf
@@ -35,14 +34,13 @@ function exchangeWidgetComponenet($log) {
         $scope.$broadcast(event, eventData);
     };
 
-    self.changeCounter = function (eventData) {
-
+    self.changeCounterPrice = function (eventData) {
+      let eventName = eventData.type + CHANGED_EVENT_SUFFIX;
+      $scope.$broadcast(eventName, eventData);
     };
 
-    self.showWithdrawAddress = function (eventData) {
-      let eventName = eventData.type + CHANGED_EVENT_SUFFIX;
+    self.showWithdrawAddress = function () {
       $scope.$parent.showWithdrawAddress = true;
-      $scope.$broadcast(eventName, eventData);
     }
 
   }
