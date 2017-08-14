@@ -40,12 +40,10 @@ function coinInputComponenet($log) {
     let counterChangedEvent = $attrs.type === 'deposit' ? 'receive' + CHANGED_EVENT_SUFFIX : 'deposit' + CHANGED_EVENT_SUFFIX;
     // let counterChangedEvent = 'deposit' + CHANGED_EVENT_SUFFIX;
 
-	  $log.debug('Hello from coinInput controller!');
-
 	  self.icons = [
-      {name: 'BTC'},
-      {name: 'LTC'},
-      {name: 'ETH'}
+      {name: 'BTC', fullName: 'Bitcoin'},
+      {name: 'LTC', fullName: 'Litecoin'},
+      {name: 'ETH', fullName: 'Ethereum'}
     ];
 
 	  $scope.requestNewPrice = function requestNewPrice () {
@@ -90,9 +88,7 @@ function coinInputComponenet($log) {
 
       self.timer = setTimeout(updatePrice, AMOUNT_CHANGE_DEBOUNCE);
     });
-
   }
-
 }
 
 export default coinInputComponenet;

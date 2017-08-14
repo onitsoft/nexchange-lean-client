@@ -2,9 +2,17 @@
   <div class="form-group label-floating has-success">
     <label for="coin-input-{{vm.type}}" class="control-label">{{vm.type | uppercase}}</label>
     <input type="text" ng-model="ngModel" class="form-control coin" id="coin-input-{{vm.type}}" name="amount" ng-change="requestNewPrice(ngModel)">
-    <span class="form-control-feedback">
-      <i class="material-icons">CRYPTO SELECTOR</i>
-    </span>
-    <span class="material-input"></span>
+
+    <div class="coin-currency-selected">
+      <div ng-repeat="icon in vm.icons | filter:{'name': vm.selectedCoin} track by $index" ng-click="vm.expanded=!vm.expanded">
+        <coin name="{{icon.name}}" coin-selected="vm.coinSelected" select="vm.select"></coin>
+      </div>
+    </div>
+
+    <div id="coin-currency-{{vm.type}}" class="coin-currency-dropdown" ng-show="vm.expanded">
+      <div ng-repeat="icon in vm.icons | filter:{'name': '!' + vm.selectedCoin} track by $index">
+        <coin full-name="{{icon.fullName}}" name="{{icon.name}}" coin-selected="vm.coinSelected" select="vm.select"></coin>
+      </div>
+    </div>
   </div>
 </form>

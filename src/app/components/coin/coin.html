@@ -1,5 +1,7 @@
-<div class="col-md-3" ng-click="vm.selectCurrent()">
-  <div class="coin">
-    <img ng-class="vm.iconClass" ng-src="vm.iconSrc" alt="{{ vm.iconName }}"> {{ vm.name }}
-  </div>
+<div class="row coin" ng-click="vm.selectCurrent()">
+	<div class="col-xs-3">{{ vm.name }}</div>
+	<div class="col-xs-3 text-center ">
+		<i class="coin-icon {{ vm.name | lowercase }}"></i>
+	</div>
+	<div ng-if="vm.fullName">{{ vm.fullName }}</div>
 </div>

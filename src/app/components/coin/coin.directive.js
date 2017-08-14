@@ -15,6 +15,7 @@ function coinComponent($log) {
       selected: '@',
       expanded: '@',
       name: '@',
+      fullName: '@',
       iconSrc: '@',
       iconClass: '@',
       select: '='
