@@ -1,16 +1,10 @@
-<div class="col-md-6">
-    <form name="vm.amountFrom">
-      <label for="coin-input-{{vm.type}}">{{vm.type}}</label>
-      <input type="text" ng-model="ngModel" class="coin" id="coin-input-{{vm.type}}" name="amount" ng-change="requestNewPrice(ngModel)">
-    </form>
-</div>
-<div class="col-md-6">
-      <div ng-repeat="icon in vm.icons | filter:{'name': vm.selectedCoin} track by $index" ng-click="vm.expanded=!vm.expanded">
-        <coin name="{{icon.name}}" coin-selected="vm.coinSelected" select="vm.select"></coin>
-      </div>
-</div>
-<div class="col-md-12">
-  <div ng-repeat="icon in vm.icons | filter:{'name': '!' + vm.selectedCoin} track by $index" ng-show="vm.expanded">
-      <coin name="{{icon.name}}" coin-selected="vm.coinSelected" select="vm.select"></coin>
+<form name="vm.amountFrom">
+  <div class="form-group label-floating has-success">
+    <label for="coin-input-{{vm.type}}" class="control-label">{{vm.type | uppercase}}</label>
+    <input type="text" ng-model="ngModel" class="form-control coin" id="coin-input-{{vm.type}}" name="amount" ng-change="requestNewPrice(ngModel)">
+    <!--       <span class="form-control-feedback">
+        <i class="material-icons">done</i>
+      </span> -->
+    <span class="material-input"></span>
   </div>
-</div>
+</form>

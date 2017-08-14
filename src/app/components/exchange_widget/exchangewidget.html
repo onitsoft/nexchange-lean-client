@@ -1,23 +1,23 @@
 <div class="row">
-    <div class="col-md-5">
-      <coin-input post-select="postSelect" change-counter-price="changeCounterPrice" ng-model="amountDeposit"
-                  type="deposit" selected-coin="BTC" show-withdraw-address="{{showWithdrawAddress}}">
-      </coin-input>
-    </div>
-    <div class="col-md-2">
+  <div class="col-md-5">
+    <coin-input post-select="postSelect" change-counter-price="changeCounterPrice" ng-model="amountDeposit" type="deposit" selected-coin="BTC" show-withdraw-address="{{showWithdrawAddress}}">
+    </coin-input>
+  </div>
 
-    </div>
-    <div class="col-md-5">
-      <coin-input post-select="postSelect" change-counter-price="changeCounterPrice" ng-model="amountReceive"
-                   type="receive" selected-coin="ETH" show-withdraw-address="{{showWithdrawAddress}}">
-      </coin-input>
-    </div>
-    <div class="col-md-5 col-md-offset-7">
-        <address></address>
-    </div>
+  <div class="col-md-2">
+  </div>
 
-    <div class="col-md-10 text-center">
-      <button class="btn btn-primary btn-lg" ng-click="showWithdrawAddress=true" ng-hide="showWithdrawAddress">Get Started</button>
-      <button class="btn btn-danger btn-lg" ng-click="showWithdrawAddress=true" ng-show="showWithdrawAddress" ng-click="vm.placeOrder">Place Order</button>
-    </div>
+  <div class="col-md-5">
+    <coin-input post-select="postSelect" change-counter-price="changeCounterPrice" ng-model="amountReceive" type="receive" selected-coin="ETH" show-withdraw-address="{{showWithdrawAddress}}">
+    </coin-input>
+  </div>
+
+  <div class="col-md-5 col-md-offset-7">
+    <address></address>
+  </div>
+
+  <div class="col-md-10 text-center">
+    <button class="btn btn-block btn-success" ng-click="showWithdrawAddress=true" ng-hide="showWithdrawAddress">Exchange!</button>
+    <button class="btn btn-block btn-warning" ng-click="showWithdrawAddress=true" ng-show="showWithdrawAddress">Confirm & Place Order</button>
+  </div>
 </div>

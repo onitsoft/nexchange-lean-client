@@ -9,7 +9,13 @@ import "./index.vendor";
 // main App module
 import "./index.module";
 
-import "../assets/styles/sass/index.scss";
+import "../assets/styles/index.scss";
+
+import "../assets/javascripts/bootstrap.min.js";
+import "../assets/javascripts/material.min.js";
+import "../assets/javascripts/material-kit.js";
+
+
 
 angular.element(document).ready(() => {
   angular.bootstrap(document, ['ngNexchange'], {

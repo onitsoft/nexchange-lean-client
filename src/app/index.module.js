@@ -16,14 +16,14 @@ const App = angular.module(
   "ngNexchange", [
     // plugins
     uiRouter,
-    "ngAnimate", 
-	"ngCookies", 
-	"ngTouch", 
-	"ngSanitize", 
-	"ngMessages", 
-	"ngAria", 
-	"restangular", 
-	"oc.lazyLoad",
+    "ngAnimate",
+    "ngCookies",
+    "ngTouch",
+    "ngSanitize",
+    "ngMessages",
+    "ngAria",
+    "restangular",
+    "oc.lazyLoad",
 
     // core
     coreModule.name,
