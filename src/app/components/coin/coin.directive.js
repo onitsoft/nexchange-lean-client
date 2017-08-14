@@ -13,7 +13,6 @@ function coinComponent($log) {
     bindToController: true,
     scope: {
       selected: '@',
-      expanded: '@',
       name: '@',
       fullName: '@',
       iconSrc: '@',

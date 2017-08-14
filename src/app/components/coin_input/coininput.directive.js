@@ -16,7 +16,7 @@ function coinInputComponenet($log) {
     scope: {
       ngModel: '=',
       type: '@',
-      selectedCoin: '@',
+      selectedCoin: '=',
       showWithdrawAddress: '@',
       postSelect: '=',
       changeCounterPrice: '='
@@ -61,6 +61,8 @@ function coinInputComponenet($log) {
 	    self.selectedCoin = coinName;
 	    self.postSelect(coinName, prevCoin, self.type);
 	    $scope.$broadcast('reset', coinName);
+
+      self.expanded = false;
 
       $scope.requestNewPrice();
     };

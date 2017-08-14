@@ -23,6 +23,8 @@ function exchangeWidgetComponenet($log) {
     'ngInject';
     let self = $scope;
 
+    self.coinFrom = 'BTC';
+    self.coinTo = 'ETH';
     self.postSelect = function (newCoin, prevCoin, type) {
         // TODO: migrate to conf
         type = type === 'deposit' ? 'receive' : 'deposit';

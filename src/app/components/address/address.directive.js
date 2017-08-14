@@ -18,7 +18,6 @@ function addressComponent($log) {
 
   function addressController ($scope) {
     'ngInject';
-	  $log.debug('Hello from address controller!');
 	  $scope.showWithdrawAddress = false;
   }
 
