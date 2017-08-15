@@ -18,7 +18,7 @@ function addressComponent($log) {
 
   function addressController ($scope) {
     'ngInject';
-	  $scope.showWithdrawAddress = false;
+    $scope.addressConf.show = false;
   }
 
 }

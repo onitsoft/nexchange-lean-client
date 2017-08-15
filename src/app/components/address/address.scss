@@ -6,3 +6,7 @@
 .container {
   margin-top: 20px;
 }
+
+.ng-invalid-address{
+	@extend .has-error;
+}

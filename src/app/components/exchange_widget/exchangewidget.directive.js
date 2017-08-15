@@ -25,6 +25,10 @@ function exchangeWidgetComponenet($log) {
 
     self.coinFrom = 'BTC';
     self.coinTo = 'ETH';
+    self.addressConf = {
+      show: false,
+      valid: false
+    };
     self.postSelect = function (newCoin, prevCoin, type) {
         // TODO: migrate to conf
         type = type === 'deposit' ? 'receive' : 'deposit';
